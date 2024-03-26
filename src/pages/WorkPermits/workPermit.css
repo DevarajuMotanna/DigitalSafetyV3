@@ -1,0 +1,256 @@
+.filter-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.filter-bar > div {
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.kysheet-modal label {
+  color: #535353;
+  font-size: 12px;
+}
+
+.kysheet-modal p {
+  margin-bottom: 0px;
+  color: #000;
+}
+
+.work-permits-page {
+  width: 100%;
+  padding: 20px;
+}
+
+.grey-bg {
+  background-color: #f4f4f4 !important;
+}
+
+.work-permits-page .page-header {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+
+.work-permits-page .page-header img {
+  width: 300px;
+  height: 40px;
+}
+
+.work-permits-page .page-header .header {
+  font-size: 28px;
+  font-weight: 600;
+  margin-left: 0px;
+}
+
+.work-permits-page .page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.work-permits-page .page-utilities {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.work-permits-page .page-utilities .search-block {
+  position: relative;
+}
+
+.work-permits-page .page-utilities .search-block .search_icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 16px;
+  left: 8px;
+}
+
+.work-permits-page .page-content .search-block .search {
+  padding: 10px 10px 10px 28px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: #e1e1e1;
+  border: 1px solid #ffffff;
+}
+
+.work-permits-page .page-content .search-block .search:focus-visible {
+  outline: unset;
+}
+
+.work-permits-page .page-content .page-utilities .btn-block .btn {
+  margin-top: 0px;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.work-permits-page .page-content .page-utilities .btn-block .btn.btn-primary {
+  background-color: #2d3394;
+  color: #ffffff;
+}
+
+.work-permits-page .table-block {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.work-permits-page .table-block .table-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.work-permits-page .table-title .title {
+  font-size: 14px;
+}
+
+.work-permits-page .table-title .view-all {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.work-permits-page .table_wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.work-permits-page .table_wrapper table.data-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.work-permits-page .table_wrapper .data-table td,
+th {
+  border: 1px solid #f4f4f4;
+  text-align: left;
+  padding: 8px;
+}
+
+.work-permits-page .table_wrapper .data-table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.work-permits-page .table_wrapper td.table-cell {
+  text-align: left;
+}
+
+.work-permits-page .table_wrapper td.table-cell.actions-cell {
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-permits-page .table_wrapper td.table-cell.text-center {
+  text-align: center;
+}
+.work-permits-page .table_wrapper td.table-cell.area-cell {
+  text-align: center;
+}
+
+.work-permits-page .table_wrapper .table-cell .btn {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #2d3394;
+  color: #2d3394;
+  margin-top: 0px;
+  max-height: 50px;
+}
+
+.work-permits-page .table_wrapper .table-cell .btn.btn-create {
+  width: 150px;
+  margin-right: 10px;
+  padding: 10px 8px;
+}
+
+.work-permits-page .table_wrapper .table-cell .highlight-text {
+  font-weight: 600;
+}
+
+.work-permits-page .table_wrapper .table-cell .highlight-text.bold {
+  font-weight: 800;
+}
+
+.work-permits-page .table_wrapper .table-cell .highlight-text.blue {
+  color: #6a70c5;
+}
+
+.work-permits-page .table_wrapper .table-cell .highlight-text.red {
+  color: red;
+}
+
+.work-permits-page .table_wrapper td.table-cell.date-cell .start-date {
+  margin-right: 5px;
+}
+
+.work-permits-page .table_wrapper td.table-cell.date-cell .end-date {
+  margin-left: 5px;
+}
+
+.work-permits-page .table_wrapper td.table-cell.area-cell .area {
+  font-weight: 600;
+  margin-bottom: 5px;
+  width: 100%;
+  display: block;
+}
+
+.work-permits-page .table_wrapper td.table-cell .dot {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.work-permits-page .table_wrapper td.table-cell .dot.red {
+  background: red;
+}
+
+.work-permits-page .table_wrapper td.table-cell .dot.green {
+  background: green;
+}
+
+.work-permits-page .table_wrapper td.table-cell .dot.amber {
+  background: #f4d21a;
+}
+
+.account-list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.account-list-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: #ccc;
+}

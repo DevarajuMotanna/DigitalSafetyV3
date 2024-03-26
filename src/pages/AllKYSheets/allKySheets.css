@@ -1,0 +1,84 @@
+.all-ky-sheets-page {
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.top-menu-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-menu-options .btn.btn-info {
+    margin-top: 0;
+    width: 200px;
+    padding: 10px;
+    position: relative;
+    border: 1px solid #535353;
+    /* background-color: rgb(69, 59, 59); */
+}
+
+.top-menu-options .btn.btn-info .back-icon {
+    position: absolute;
+    left: 15px;
+    top: 14px;
+}
+
+.top-menu-options .work-permit-info {
+    display: inline-block;
+    text-align: right;
+}
+
+.top-menu-options .work-permit-info .name {
+    font-size: 10px;
+}
+
+.page-header {
+    display: inline-block;
+}
+
+.page-header .sub-heading {
+    font-size: 12px;
+}
+
+.page-header .header {
+    font-size: 20px;
+}
+
+.page-content {
+    height: auto;
+}
+
+.page-content .page-utilities .search-block .search{
+    margin-top: 0px;
+}
+
+.page-content .page-utilities {
+    margin-bottom: 20px;
+}
+
+.page-content .search-block .search_icon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 12px;
+    left: 9px;
+}
+
+.all-ky-sheets-page .page-content .table-block .table_wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-block .table-title {
+    margin-bottom: 10px;
+}
+
+.table-block .table-title .title {
+    font-weight: 500;
+}
+
+.table_wrapper td.table-cell.actions-cell.text-center {
+    justify-content: center;
+}

@@ -1,0 +1,32 @@
+.sidebar-wrapper {
+  background-color: #efefef;
+  min-height: 100vh;
+  height: 100%;
+}
+.sidebar-wrapper .menu-item {
+  display: flex;
+  padding: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.sidebar-wrapper .menu-item.active {
+  border-left: 6px solid #2d3394;
+  font-weight: 600;
+  color: #2d3394;
+}
+
+.sidebar-wrapper .menu-item.active span {
+  color: #2d3394;
+}
+
+.sidebar-wrapper .menu-item .icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.menu-item .menu-text {
+  margin-left: 10px;
+  color: #000;
+}

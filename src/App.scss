@@ -1,0 +1,25 @@
+
+
+$theme-colors: (
+  "primary": #2D3394,
+  "danger": #ff4136
+);
+
+a {
+  color: #2D3394 !important;
+}
+
+// $table-accent-bg: 
+// $table-striped-bg: red;
+
+@import 'bootstrap/scss/bootstrap';
+
+#root {
+    width: 100%;
+}
+
+.clock {
+  position: absolute;
+  right: 20px;
+  padding-top: 15px;
+}

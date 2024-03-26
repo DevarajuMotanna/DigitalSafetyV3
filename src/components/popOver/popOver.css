@@ -1,0 +1,358 @@
+.popover.main-wrapper {
+    width: 450px;
+    height: 600px;
+    border: 1px solid #E4E4E4;
+    margin-left: 33%;
+}
+.popover.main-wrapper .popover-header {
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid #E4E4E4;
+}
+.popover-header .btn.close_btn {
+    width: 100px;
+    padding: 12px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 40px;
+    border: 1px solid #2D3394;
+    color: #2D3394;
+    border-radius: 4px;
+    margin:0px;
+}
+.popover-header .btn.close_btn .close_icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 18px;
+    top: 11px;
+}
+
+.popover-content {
+    padding: 10px 30px;
+    height: 100%;
+    overflow: auto;
+}
+
+.popover-content .row {
+    padding: 2px 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 90%;
+}
+
+.popover-content .row.work-permit-info .text{
+    font-size: 20px;
+}
+
+.popover-content .row.work-permit-number-info .text{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.popover-content .row .row {
+    margin-bottom: 10px;
+    padding: 0px;
+    width: 50%;
+    display: inline-block;
+}
+
+.popover-content .row .sub-heading {
+    font-size: 10px;
+    color: #535353;
+}
+
+.popover-content .row .text {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 4px;
+}
+
+.popover-content .row .text.red {
+    color: red;
+}
+
+.popover-content .row .text.green{
+    background: green;
+}
+
+.popover-content .row .status_key .dot.amber{
+    background: yellow;
+}
+
+.popover-content .row.map-block {
+    height: 200px;
+}
+
+.popover-content .row .attachment {
+    height: 250px;
+    background-color: #535353;
+    margin-top: 10px;
+}
+
+.popover-content .row.place-holder {
+    background-color: #535353;
+}
+
+.popover-content .row .status_key .dot{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background-color: gray;
+    border-radius: 50%;
+}
+
+.popover-content .row .status_key .dot.red{
+    background: red;
+}
+
+.popover-content .row .status_key .dot.green{
+    background: green;
+}
+
+.popover-content .row .status_key .dot.amber{
+    background: yellow;
+}
+
+/* Work permit css*/
+.popover.main-wrapper.create-new-work-permit{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border: unset;
+    margin: 0px;
+}
+.popover.main-wrapper.create-new-work-permit .popover-header {
+    text-align: unset;
+}
+.popover.main-wrapper.create-new-work-permit .popover-header .title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.popover.main-wrapper.create-new-work-permit .popover-header{
+    padding: 20px;
+}
+.create-new-work-permit .popover-header .row .sub-heading {
+    font-size: 10px;
+    color: #535353;
+}
+
+.create-new-work-permit .popover-header .row .text {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 4px;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .sub-titles{
+    display: flex;
+    width: 45%;
+    justify-content: left;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .sub-titles .row {
+    margin-right: 20px;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .page-utilities{
+    display: flex;
+    width: 65%;
+    justify-content: space-between;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .page-utilities .utility{
+    font-size: 14px;
+    color: #4F62B0;
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding-top: 5px;
+    font-weight: 400;
+    justify-content: center;
+    border-right: 2px solid #ccc;
+    height: 26px;
+    min-width: 170px;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .page-utilities .utility.with_icon {
+    border-right: unset;
+}
+
+.create-new-work-permit .popover-header .sub-titles-block .page-utilities .utility.with_icon .icon {
+    width: 26px;
+    height: 26px;
+    margin: 0px 10px 10px 0px;
+}
+.create-new-work-permit .popover-header .sub-titles-block .page-utilities .utility.with_icon span {
+    margin-top: 3px;
+}
+
+.create-new-work-permit .popover-content {
+    display: inline-flex;
+    width: 100%;
+}
+
+.create-new-work-permit .popover-content .left-options {
+    width: 20%;
+    display: block;
+    text-align: left;
+    margin-right: 15px;
+}
+
+.create-new-work-permit .popover-content .right-content {
+    width: 80%;
+    display: block;
+    text-align: left;
+    padding: 0px 15px;
+}
+
+.create-new-work-permit .popover-content .left-options .wizard-number {
+    width: 18px;
+    height: 18px;
+    padding: 0px 2px 4px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.create-new-work-permit .popover-content .left-options .wizard {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 500;
+}
+
+.create-new-work-permit .popover-content .left-options .wizard .wizard-number {
+    background-color: #EFEFEF;
+    color: #000;
+}
+
+.create-new-work-permit .popover-content .left-options .wizard.active .wizard-number {
+    background-color: #2D3394;
+    color: white;
+}
+
+.create-new-work-permit .popover-content .right-content .wizard-title {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.create-new-work-permit .popover-content .right-content .wizard-title .wizard-number {
+    width: 28px;
+    height: 24px;
+    padding: 0px 2px 8px;
+    border-radius: 50%;
+    border: 1px solid #2D3394;
+    display: block;
+    text-align: center;
+    margin-right: 10px;
+    background-color: #EFEFEF;
+    color: #2D3394;
+}
+.create-new-work-permit .popover-content .right-content .form-control label {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+.create-new-work-permit .popover-content .right-content .form-control input {
+    width: 30%;
+    border: 1px solid #E1E1E1;
+}
+.create-new-work-permit .popover-content .right-content .form-control input::placeholder {
+    color: #E1E1E1;
+}
+.create-new-work-permit .popover-content .right-content .row.row-group .form-control input:disabled {
+    background-color : #EFEFEF;
+}
+.create-new-work-permit .popover-content .right-content .row {
+    width: 100%;
+}
+.create-new-work-permit .popover-content .right-content .row.row-group {
+    padding: 2px 0px;
+    width: 100%;
+}
+.create-new-work-permit .popover-content .right-content .row.row-group .form-control {
+    width: 30%;
+}
+
+.create-new-work-permit .popover-content .right-content .row.row-group .form-control input {
+    width: 100%;
+}
+
+.create-new-work-permit .popover-content .right-content .form-control .form-input select {
+    width: 31.5%;
+    padding: 10px;
+    margin-top: 5px;
+    height: 46px;
+    border-radius: 5px;
+    border: 1px solid #E1E1E1;
+}
+
+.create-new-work-permit .popover-content .right-content .row.row-group .form-control:has(.form-input select) {
+    width: 31.5%;
+}
+
+.create-new-work-permit .popover-content .right-content .row.row-group .form-control .form-input select {
+    width: 100%;
+}
+
+.create-new-work-permit .popover-content .right-content .block-title {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.create-new-work-permit .popover-content .right-content .row.form-control .form-input textarea {
+    width: 64%;
+    border: 1px solid #E1E1E1;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.create-new-work-permit .popover-content .right-content .checkbox-block input {
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+.create-new-work-permit .popover-content .right-content .checkbox-block label {
+    margin-top: 9px;
+    font-weight: 500;
+}
+
+.create-new-work-permit .popover-footer {
+    border-top: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.create-new-work-permit .popover-footer .footer-btn {
+    width: 100px;
+    padding: 10px;
+    margin: 0px;
+}
+
+.create-new-work-permit .popover-footer .footer-btn.next-btn {
+    background-color: #2D3394;
+    color: #ffffff;
+    border: 1px solid #2D3394;
+}
+
+/*remove this later */
+.tab1 {
+    display: none;
+}

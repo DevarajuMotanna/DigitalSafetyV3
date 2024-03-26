@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+thead, tbody, tfoot, tr, td, th {
+  border: 0px;
+}
+
+thead, thead th {
+  background-color: #EFEFEF !important;
+}

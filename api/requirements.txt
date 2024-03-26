@@ -1,0 +1,8 @@
+streamlit
+pandas
+pillow
+numpy
+sentence-transformers
+scikit-learn
+nltk
+joblib
