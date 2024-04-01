@@ -14,9 +14,10 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function WPNumberDetails() {
+  const navigate = useNavigate();
   const [workPermitDetails, setWorkPermitDetails] = useState(null);
   const styles = {
     firstTableTypo: { fontSize: "12px", whiteSpace: "nowrap" },
@@ -175,7 +176,7 @@ export default function WPNumberDetails() {
           </InputLabel>
           <TextField
             size="small"
-            value={workPermitDetails?.jobDetailes || ""}
+            value={workPermitDetails?.wpJobDetails || ""}
             disabled
             sx={{ width: 500 }}
           />
@@ -193,6 +194,7 @@ export default function WPNumberDetails() {
             size="small"
             variant="contained"
             sx={{ backgroundColor: "#000080" }}
+            onClick={() => navigate("/new_ky_sheet_details/1")}
           >
             Create new KY sheet
           </Button>
@@ -236,10 +238,12 @@ export default function WPNumberDetails() {
               <TableBody>
                 {active.map((act, index) => (
                   <TableRow key={index}>
-                    <TableCell width="25%">{act.id}</TableCell>
-                    <TableCell width="25%">{act.filledDate}</TableCell>
-                    <TableCell width="25%">{act.workPermitId}</TableCell>
-                    <TableCell width="25%">{act.workPermitId}</TableCell>
+                    <TableCell width="25%">{act.id || "n/a"}</TableCell>
+                    <TableCell width="25%">{act.filledDate || "n/a"}</TableCell>
+                    <TableCell width="25%">
+                      {workPermitDetails?.workPermitPlace || "n/a"}
+                    </TableCell>
+                    {/* <TableCell width="25%">{act.workPermitId}</TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
@@ -285,10 +289,12 @@ export default function WPNumberDetails() {
               <TableBody>
                 {completed.map((act, index) => (
                   <TableRow key={index}>
-                    <TableCell width="25%">{act.id}</TableCell>
-                    <TableCell width="25%">{act.filledDate}</TableCell>
-                    <TableCell width="25%">{act.workPermitId}</TableCell>
-                    <TableCell width="25%">{act.workPermitId}</TableCell>
+                    <TableCell width="25%">{act.id || "n/a"}</TableCell>
+                    <TableCell width="25%">{act.filledDate || "n/a"}</TableCell>
+                    <TableCell width="25%">
+                      {workPermitDetails?.workPermitPlace || "n/a"}
+                    </TableCell>
+                    {/* <TableCell width="25%">{act.workPermitId}</TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>

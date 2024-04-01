@@ -36,7 +36,7 @@ const Index = () => {
       console.log(filterData({ location }));
       console.log(selectWorkPermit, activities, chemicals);
       const response = await axios.post(
-        "http://DHKY-Dev-Webapp-ALB-1994473636.ap-south-1.elb.amazonaws.com/recommendation",
+        "http://192.168.1.21:5173/recommendation",
         {
           work_permit: selectWorkPermit,
           activities,
@@ -46,11 +46,26 @@ const Index = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
           },
         }
       );
-      setRecommendationData(response?.data?.recommendation || []);
+
+      let jsonData = response?.data;
+
+      // Check if the data is a string
+      if (typeof jsonData === "string") {
+        // Convert the string to an object
+        jsonData = jsonData
+          .replace(/Infinity/g, '"Infinity"')
+          .replace(/NaN/g, '"NaN"');
+        try {
+          jsonData = JSON.parse(jsonData);
+          console.log(jsonData.recommendation); // Now jsonData is an object
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+        }
+      }
+      setRecommendationData(jsonData?.recommendation || []);
     } catch (error) {
       console.log(error);
     }
@@ -235,7 +250,13 @@ const Index = () => {
                 <TableBody>
                   {recommendationData &&
                     recommendationData?.map((data, index) => (
-                      <TableRow key={index}>
+                      <TableRow
+                        key={index}
+                        sx={{
+                          backgroundColor:
+                            index % 2 === 0 ? "lightgray" : "white",
+                        }}
+                      >
                         <TableCell>
                           {data["Hazard Category"] || "N/a"}
                         </TableCell>

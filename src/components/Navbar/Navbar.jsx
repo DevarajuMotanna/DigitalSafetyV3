@@ -4,10 +4,13 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MenuIcon from "@mui/icons-material/Menu";
 import PropTypes from "prop-types";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
 
 Navbar.propTypes = { title: PropTypes.string };
 
 function Navbar({ title }) {
+  const navigate = useNavigate();
   return (
     <Grid container>
       <Grid item xs={4}>
@@ -29,6 +32,9 @@ function Navbar({ title }) {
             marginRight: 2,
           }}
         >
+          <IconButton onClick={() => navigate("/cards")}>
+            <HomeIcon />
+          </IconButton>
           <IconButton>
             <SearchIcon />
           </IconButton>
@@ -36,7 +42,7 @@ function Navbar({ title }) {
             <NotificationsNoneIcon />
           </IconButton>
           <Avatar sx={{ width: 30, height: 30, marginRight: 1 }} />
-          <Typography>Devaraju</Typography>
+          <Typography>Test User</Typography>
           <IconButton>
             <MenuIcon />
           </IconButton>

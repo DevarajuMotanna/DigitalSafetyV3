@@ -5,9 +5,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import Response from "../../Data/WorkpermitResponse";
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  TableCell,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 
 // eslint-disable-next-line
 const FilterComponent = ({
@@ -131,15 +138,15 @@ const FilterComponent = ({
 
 function WorkPermit() {
   // const [searchQuery, setSearchQuery] = useState("");
-  const [filteredData, setFilteredData] = useState(Response);
+  const [filteredData, setFilteredData] = useState([]);
+  const [finalData, setFinalData] = useState([]);
   const [areaFilter] = useState("All");
   const [dateFilter, setDateFilter] = useState("All");
   const [permitTypeFilter, setPermitTypeFilter] = useState("All");
   const [kyStatusFilter, setKyStatusFilter] = useState("All");
-  const [finalData, setFinalData] = useState(Response);
-  const { id } = useParams();
 
-  console.log(id);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -186,14 +193,35 @@ function WorkPermit() {
 
   useEffect(() => {
     const getData = async () => {
+      let paginationData = [];
+      let totalPaginatedData = Response;
       try {
-        const response = await axiosClient.get(`/work-permits`);
-        setFilteredData(response?.data?.data.records);
-        setFinalData(response?.data?.data.records);
+        for (let i = 1; i <= 999; i++) {
+          const response = await axiosClient.get(`/work-permits?pageNo=${i}`);
+          const responseData = response?.data?.data.records;
+          paginationData = [...paginationData, ...responseData];
+          totalPaginatedData.push(paginationData);
+          if (paginationData.length == 0 || !paginationData) {
+            break;
+          }
+        }
+
+        console.log(paginationData);
+        setFilteredData(paginationData);
+        setFinalData(paginationData);
+
+        // paginationData = [];
+        // setFilteredData(response?.data?.data.records);
+        // setFinalData(response?.data?.data.records);
       } catch (error) {
         console.log(error);
       }
     };
+    // if (type) {
+    //   console.log("type==>", type);
+    //   handlefilters();
+    // }
+    // handlefilters();
     getData();
   }, []);
 
@@ -204,7 +232,7 @@ function WorkPermit() {
   }, [finalData]);
 
   const handlefilters = () => {
-    console.log(finalData);
+    // console.log(finalData);
     if (finalData && finalData.length > 0) {
       const result = finalData.filter((data) => {
         if (
@@ -235,46 +263,48 @@ function WorkPermit() {
           return true;
         }
       });
-      console.log(result);
+      // console.log(result);
       setFilteredData(result);
     }
   };
   const checkDateFilter = (data) => {
-    const currentDate = new Date();
-    const dataDate = new Date(data.wpIssueFromDate);
+    const dataToDate = data.wpIssueToDate;
 
     if (dateFilter === "Today") {
       const date = dayjs().format("YYYY-MM-DD");
 
       return data.wpIssueFromDate === date;
     } else if (dateFilter === "Last 2 Days") {
-      const lastWeekDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate() - 2
-      );
-      return dataDate >= lastWeekDate && dataDate <= currentDate;
+      const start = dayjs().subtract(2, "day").format("YYYY-MM-DD");
+      const end = dayjs().subtract(1, "day").format("YYYY-MM-DD");
+      return start <= dataToDate && end >= dataToDate;
     } else if (dateFilter === "Last Week") {
-      const lastWeekDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate() - 7
-      );
-      return dataDate >= lastWeekDate && dataDate <= currentDate;
+      const date = dayjs()
+        .startOf("week")
+        .subtract(1, "day")
+        .format("YYYY-MM-DD");
+      const start = dayjs(date)
+        .startOf("week")
+        .add(1, "day")
+        .format("YYYY-MM-DD");
+      const end = dayjs(date).add(1, "day").format("YYYY-MM-DD");
+      return start <= dataToDate && end >= dataToDate;
     } else if (dateFilter === "Last Month") {
-      const firstDayOfMonth = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1
-      );
-      return dataDate >= firstDayOfMonth && dataDate <= currentDate;
+      const date = dayjs()
+        .startOf("month")
+        .subtract(1, "day")
+        .format("YYYY-MM-DD");
+      const start = dayjs(date).startOf("month").format("YYYY-MM-DD");
+      const end = dayjs(date).format("YYYY-MM-DD");
+      return start <= dataToDate && end >= dataToDate;
     } else if (dateFilter === "Last Year") {
-      const lastYearDate = new Date(
-        currentDate.getFullYear() - 1,
-        currentDate.getMonth(),
-        currentDate.getDate()
-      );
-      return dataDate >= lastYearDate && dataDate <= currentDate;
+      const date = dayjs()
+        .startOf("year")
+        .subtract(1, "day")
+        .format("YYYY-MM-DD");
+      const start = dayjs(date).startOf("year").format("YYYY-MM-DD");
+      const end = dayjs(date).format("YYYY-MM-DD");
+      return start <= dataToDate && end >= dataToDate;
     } else {
       return true; // No date filter applied
     }
@@ -282,29 +312,16 @@ function WorkPermit() {
 
   useEffect(() => {
     handlefilters();
-
-    // eslint-disable-next-line
   }, [permitTypeFilter, dateFilter, kyStatusFilter]);
 
-  // const handleSearch = async (event) => {
-  //   try {
-  //     const query = event.target.value;
-  //     setSearchQuery(query);
+  const handleChangePage = (e, newPage) => {
+    setPage(newPage);
+  };
 
-  //     const response = await axios.get(
-  //       "http://localhost:9090/workpermit/api/v1/work-permits"
-  //     );
-  //     // setWorkPermitData(response.data);
-
-  //     const filtered = response?.data?.data?.filter((item) =>
-  //       item?.workPermitNo.includes(query)
-  //     );
-  //     setFilteredData(filtered);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(e.target.value);
+  };
+  console.log(filteredData);
   return (
     <div className="work-permits-page">
       <div className="page-header">
@@ -352,19 +369,21 @@ function WorkPermit() {
               </thead>
               <tbody>
                 <tr></tr>
-                {filteredData?.map((item, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Link
-                        to={{
-                          pathname: `/work-permit/${item?.workPermitPlanId}`,
-                          state: item,
-                        }}
-                      >
-                        {item?.workPermitPlanId || "-"}
-                      </Link>
-                    </td>
-                    {/* <td>
+                {filteredData
+                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Link
+                          to={{
+                            pathname: `/work-permit/${item?.workPermitPlanId}`,
+                            state: item,
+                          }}
+                        >
+                          {item?.workPermitPlanId || "-"}
+                        </Link>
+                      </td>
+                      {/* <td>
                       <span
                         style={{
                           backgroundColor: item?.status,
@@ -376,35 +395,64 @@ function WorkPermit() {
                         {" "}
                       </span>
                     </td> */}
-                    <td className="area-cell">
-                      <span className="area">
-                        {item?.workPermitPlace || "-"}
-                      </span>
-                      <span className="sub-area">{item?.subArea}</span>
-                    </td>
-                    <td className="permitType">
-                      {item?.workPermitType || "-"}
-                    </td>
-                    <td width="10%">
-                      <span className="start-date">
-                        {item?.wpIssueFromDate}
-                      </span>{" "}
-                    </td>
-                    <td>
-                      <span className="end-date">
-                        {item?.wpIssueToDate || "-"}
-                      </span>
-                    </td>
-                    {/* <td>{item?.WpNoPersion}</td> */}
-                    <td>
-                      <span className="text-primary fw-semibold left-text">
-                        {item?.wpCheckList || "Y"}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="area-cell">
+                        <span className="area">
+                          {item?.workPermitPlace || "-"}
+                        </span>
+                        <span className="sub-area">{item?.subArea}</span>
+                      </td>
+                      <td className="permitType">
+                        {item?.workPermitType || "-"}
+                      </td>
+                      <td width="10%">
+                        <span className="start-date">
+                          {item?.wpIssueFromDate}
+                        </span>{" "}
+                      </td>
+                      <td>
+                        <span className="end-date">
+                          {item?.wpIssueToDate || "-"}
+                        </span>
+                      </td>
+                      {/* <td>{item?.WpNoPersion}</td> */}
+                      <td>
+                        <span className="text-primary fw-semibold left-text">
+                          {item?.wpCheckList || "Y"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                {!filteredData.length && (
+                  <TableRow>
+                    <TableCell colSpan={6}>
+                      <Alert
+                        severity="warning"
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          height: "150px",
+                          alignItems: "center",
+                        }}
+                      >
+                        <AlertTitle sx={{ fontWeight: 600, marginTop: "8px" }}>
+                          No records found
+                        </AlertTitle>
+                      </Alert>
+                    </TableCell>
+                  </TableRow>
+                )}
               </tbody>
             </table>
+            <Box>
+              <TablePagination
+                component="div"
+                count={filteredData.length || 0}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </Box>
           </div>
         </div>
       </div>

@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 const MarutiHomePage = () => {
   const navigate = useNavigate();
- const LABELS = {
-  HEADING:"Safety Digitalization Platform",
-   SUB_HEADING:'Stay Safe Today,Secure a Better Tomorrow',
-   SUB_TEXT:'Dive Into Safety Platform'
- }
+  const LABELS = {
+    HEADING: "Safety Digitalization Platform",
+    SUB_HEADING: "Stay Safe Today, Secure a Better Tomorrow",
+    SUB_TEXT: "Dive Into Safety Platform",
+  };
   const handleNavigate = () => {
     navigate("/cards");
   };
